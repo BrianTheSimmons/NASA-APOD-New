@@ -25,6 +25,7 @@ body {
     height: 100vh;
     position: relative;
     z-index: 1;
+    overflow: scroll;
 }
 
 .header-wrap {
@@ -140,6 +141,57 @@ h2 {
     color: #FC3D21 !important;
 }
 
+/* Mobile styles */
+@media screen and (max-width: 920px) {
+    .apod-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 1.25rem 5px 5px 5px;
+    }
+
+    .apod-container .image-container {
+        max-width: 600px;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .apod-container .content {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .header-wrap p.lead {
+        font-size: 1rem;
+    }
+
+    .header-wrap p:last-of-type{
+        font-size: 0.75rem;
+    }
+
+    .apod-container .content h2{
+        font-size: 1rem;
+    }
+
+    .apod-container .content .apod-description {
+        font-size: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .selection-wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .selection-wrapper .apod-button {
+        align-self: unset;
+        margin-top: 1.25rem;
+    }
+}
+
+/* Stars */
 #stars {
     width: 1px;
     height: 1px;
