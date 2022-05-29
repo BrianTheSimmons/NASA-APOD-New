@@ -3,16 +3,18 @@ import axios from 'axios';
 import './App.css';
 import { GiAstronautHelmet } from 'react-icons/gi';
 import Apod from './components/Apod';
+import {useDatePicker} from './components/Datepicker';
 
 function App() {
 
+  const { render, selectedDate } = useDatePicker();
   const [ apodUrl, setApodUrl ] = useState('')
   const [ title, setTitle ] = useState('Apod Title');
   const [ desc, setDesc ] = useState('Apod Description');
   const [ apodIsShown, showApod ] = useState(false);
 
   let API_KEY = 'bdEGU1QkUUkeD4ghVmYsgojABstcMOQ7GhsT7OCQ';
-  let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+  let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${selectedDate}`;
 
   const getApod = () => {
     
@@ -20,24 +22,28 @@ function App() {
       setApodUrl(res.data.url)
       setTitle(res.data.title)
       setDesc(res.data.explanation)
-      console.log(res)
     })
     showApod(true);
   }
 
   return (
     <div className="App">
-      <h1>NASA Apod</h1>
-      <p className='lead'>Explore the universe with the NASA Astronomy Picture of the Day, or APOD for short!</p>
-      <p className='lead'>If you would like to get today's APOD, click the button below! If you want to get the APOD for a specific date, use the Calendar in the next section</p>
-      <button onClick={getApod} className='apod-button'> 
-        <GiAstronautHelmet className='astronaut-icon'/> 
-        Get Today's APOD
-      </button>
+      <div className='header-wrap'>
+        <h1>NASA Apod</h1>
+        <p className='lead'>Explore the universe with the NASA Astronomy Picture of the Day, or APOD for short!</p>
+        <p>You can use the date picker below to select the APOD for a specific day. Once you've made your selection, just click the "Get The APOD" button and enjoy unlocking a secret of the cosmos!</p>
+      </div>
+      <div className='selection-wrapper'>
+        <button onClick={getApod} className='apod-button'> 
+          <GiAstronautHelmet className='astronaut-icon'/> 
+          Get The APOD!
+        </button>
+        {render}
+      </div>
 
       {/* APOD container */}
       <div className=''>
-        {apodIsShown === true && <Apod apod={apodUrl} title={title} description={desc} />}
+        {apodIsShown === true && <Apod apod={apodUrl} title={title} description={desc}/>}
       </div>
     </div>
   );
