@@ -27,6 +27,42 @@ body {
     z-index: 1;
 }
 
+.header-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header-wrap p.lead{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.selection-wrapper{
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+.date-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.date-wrapper .apod-date-picker {
+    padding: 10px 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #FC3D21;
+    color: white;
+    border: 2px solid black;
+}
+
 h1{
     text-transform: uppercase;
     font-weight: 400;
@@ -34,12 +70,11 @@ h1{
     background-image: linear-gradient(90deg, #0B3D91 ,#FC3D21);
     background-clip: text;
     color: transparent;
+    margin-bottom: 2rem;
 }
 
 .apod-button {
     display: flex;
-    margin: 0 auto;
-    margin-top: 2rem;
     align-items: center;
     justify-content: center;
     border: 2px solid #FC3D21;
@@ -50,6 +85,7 @@ h1{
     background-color: #000;
     color: #fff;
     font-size: 1rem;
+    align-self: end;
 }
 
 .apod-button .astronaut-icon {
